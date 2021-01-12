@@ -23,9 +23,9 @@ public:
     Sales_item() : units_sold(0), revenue(0.0) {}
 
 public:
-    std::string isbn;
-    unsigned units_sold;
-    double revenue;
+    std::string isbn;    //24
+    unsigned units_sold; //4
+    double revenue;      //8
 };
 
 using std::istream;
