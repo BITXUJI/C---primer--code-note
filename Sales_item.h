@@ -5,11 +5,12 @@
 
 class Sales_item
 {
+    friend std::istream &operator>>(std::istream &, Sales_item &);
+    friend std::ostream &operator<<(std::ostream &, const Sales_item &);
+
 public:
     Sales_item(const std::string &book) : isbn(book), units_sold(0), revenue(0.0) {}
     Sales_item(std::istream &is) { is >> *this; }
-    friend std::istream &operator>>(std::istream &, Sales_item &);
-    friend std::ostream &operator<<(std::ostream &, const Sales_item &);
 
 public:
     Sales_item &operator+=(const Sales_item &);
