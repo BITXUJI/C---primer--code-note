@@ -10,6 +10,7 @@ class Sales_item
 
 public:
     Sales_item(const std::string &book) : isbn(book), units_sold(0), revenue(0.0) {}
+    Sales_item(const std::string &book, unsigned n, double p) : isbn(book), units_sold(n), revenue(n * p) {}
     Sales_item(std::istream &is) { is >> *this; }
 
 public:
