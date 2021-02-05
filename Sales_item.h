@@ -7,6 +7,7 @@ class Sales_item
 {
     friend std::istream &operator>>(std::istream &, Sales_item &);
     friend std::ostream &operator<<(std::ostream &, const Sales_item &);
+    friend bool operator<(const Sales_item &, const Sales_item &);
 
 public:
     Sales_item(const std::string &book) : isbn(book), units_sold(0), revenue(0.0) {}
@@ -81,5 +82,10 @@ inline double Sales_item::avg_price() const
         return revenue / units_sold;
     else
         return 0;
+}
+
+inline bool operator<(const Sales_item &lhs, const Sales_item &rhs)
+{
+    return lhs.isbn < rhs.isbn;
 }
 #endif
