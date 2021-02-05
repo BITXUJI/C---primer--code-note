@@ -10,7 +10,7 @@ int main()
     std::cin.ignore();
     std::cout << "input the string: ";
     std::cin.get(input, size + 1);
-    std::cout << ;
+    std::cout << input;
     delete[] input;
 
     return 0;
