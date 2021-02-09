@@ -23,6 +23,8 @@ public:
     typedef typename std::vector<T>::size_type size_type;
     Blob();
     Blob(std::initializer_list<T> il);
+    template <typename It>
+    Blob(It b, It e) : data(std::make_shared<std::vector<T>>(b, e)) {}
     size_type size() const { return data->size(); }
     bool empty() const { return data->empty(); }
     void push_back(const T &t) { data->push_back(t); }
@@ -74,7 +76,8 @@ void Blob<T>::check(size_type i, const std::string &msg) const
     if (i >= data->size())
         throw std::out_of_range(msg);
 }
-templeate<typename T> bool operator==<T>(const Blob<T> &lhs, const Blob<T> &rhs)
+template <typename T>
+bool operator==(const Blob<T> &lhs, const Blob<T> &rhs)
 {
     return *(lhs.data) == *(rhs.data);
 }

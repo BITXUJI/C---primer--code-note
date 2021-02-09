@@ -32,7 +32,7 @@ std::shared_ptr<std::vector<T>> BlobPtr<T>::check(std::size_t i, const std::stri
 {
     auto p = wptr.lock();
     if (!p)
-        throw std::runtime_error("unbound BlobPtr");
+        throw std::runtime_error("unbounded BlobPtr");
     if (i >= p->size())
         throw std::out_of_range(msg);
     return p;
@@ -49,6 +49,7 @@ template <typename T>
 BlobPtr<T> &BlobPtr<T>::operator--()
 {
     --curr;
+    check(curr, "decrement past begin of BlobPtr");
     return *this;
 }
 
